@@ -14,4 +14,12 @@
 ![GitHub metrics](https://metrics.lecoq.io/from-tanim)  
 
 ![GitHub streak stats](https://streak-stats.demolab.com/?user=from-tanim)  
+<html>
+  <body>
+    <pre class="blink" style="color:green" align="center"> ___          ____        
+(_  _   _  __  /  _   '_  
+/  / ()//)    (  (//)///) 
+                          </pre>
+  </body>
+</html>
 
