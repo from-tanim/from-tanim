@@ -1,8 +1,8 @@
 ### Howdy👋, This is Tanim
-#### Web Developer
+#### Learning Web Developing and tech things also interested in machine learning and Data structures
 
 
-- 🌱 I’m currently learning JS 
+- 🌱 I’m currently learning JSON 
 - 📫 How to reach me: h.tanim@outlook.com 
 - ⚡ Fun fact: The circulatory system is more than 60,000 miles long. 
 
