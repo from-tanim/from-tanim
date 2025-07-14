@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Routine</title>
+  <style>
+    body {
+      background-color: #02271b; /* Deep green background */
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      width: 90%;
+      max-width: 700px;
+      padding: 20px;
+      border: 2px solid white;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    .schedule {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    .schedule li {
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid white;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .schedule li.active {
+      background-color: #d61212; /* Highlight color */
+      color: rgb(16, 194, 234);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Daily Routine</h1>
+    <ul class="schedule">
+      <li data-start="21:00" data-end="3:00">9:00 PM - 3:00 AM: Sleep/Rest</li>
+      <li data-start="3:00" data-end="3:30">3:00 AM - 3:30 AM: Shower</li>
+      <li data-start="4:00" data-end="5:00">4:00 AM - 5:00 AM: Prayer</li>
+      <li data-start="5:00" data-end="5:30">5:00 AM - 5:30 AM: GK</li>
+      <li data-start="5:30" data-end="6:10">5:30 AM - 6:10 AM: Fajr</li>
+      <li data-start="6:10" data-end="6:40">6:10 AM - 6:40 AM: Quran</li>
+      <li data-start="6:40" data-end="8:40">6:40 AM - 8:40 AM: Math</li>
+      <li data-start="8:40" data-end="9:40">8:40 AM - 9:40 AM: English</li>
+      <li data-start="9:40" data-end="11:40">9:40 AM - 11:40 AM: Coaching Revise</li>
+      <li data-start="11:40" data-end="12:00">11:40 AM - 12:00 PM: Shower</li>
+      <li data-start="12:00" data-end="13:00">12:00 PM - 1:00 PM: ICT/Bangla</li>
+      <li data-start="13:00" data-end="13:40">1:00 PM - 1:40 PM: Duhr</li>
+      <li data-start="15:00" data-end="17:00">3:00 PM - 5:00 PM: Physics</li>
+      <li data-start="18:00" data-end="21:00">6:00 PM - 9:00 PM: Biology</li>
+    </ul>
+  </div>
+
+  <script>
+    function parseTime(timeStr) {
+      const [hours, minutes] = timeStr.split(":").map(Number);
+      return hours * 60 + minutes;
+    }
+
+    function isTimeInRange(currentTime, startTime, endTime) {
+      if (endTime < startTime) {
+        // Handle intervals that span midnight
+        return currentTime >= startTime || currentTime < endTime;
+      }
+      return currentTime >= startTime && currentTime < endTime;
+    }
+
+    function sendNotification(message) {
+      if (Notification.permission === "granted") {
+        new Notification("Daily Routine", { body: message });
+      }
+    }
+
+    function updateHighlight() {
+      const now = new Date();
+      const currentTime = now.getHours() * 60 + now.getMinutes();
+
+      const items = document.querySelectorAll(".schedule li");
+      let activeActivity = null;
+
+      items.forEach(item => {
+        const startTime = parseTime(item.dataset.start);
+        const endTime = parseTime(item.dataset.end);
+
+        if (isTimeInRange(currentTime, startTime, endTime)) {
+          item.classList.add("active");
+          activeActivity = item.textContent.trim();
+        } else {
+          item.classList.remove("active");
+        }
+      });
+
+      // Notify user if the activity changes
+      if (activeActivity && activeActivity !== window.lastActiveActivity) {
+        sendNotification(activeActivity);
+        window.lastActiveActivity = activeActivity;
+      }
+    }
+
+    // Request notification permission
+    if (Notification.permission !== "granted") {
+      Notification.requestPermission().then(permission => {
+        if (permission !== "granted") {
+          alert("Notifications are disabled. Enable them to receive activity alerts.");
+        }
+      });
+    }
+
+    setInterval(updateHighlight, 1000); // Check every second
+    updateHighlight(); // Initial call to highlight the current activity
+  </script>
+</body>
+</html>
