@@ -3,38 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanım Hossain - Contact Information</title>
-    <!-- Tailwind CSS CDN for styling -->
+    <title>Tanım Hossain - Contact Card</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter for a clean look -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Custom CSS for the Inter font */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
+        body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body class="bg-gray-50 flex items-center justify-center min-h-screen p-4 sm:p-8">
-    <div class="w-full max-w-md bg-white rounded-xl shadow-lg p-6 sm:p-8 text-center">
-        <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-700 mb-4">Tanım Hossain</h1>
-        <p class="text-lg sm:text-xl text-gray-600 mb-6">Contact Information</p>
+<body class="bg-slate-50 flex items-center justify-center min-h-screen p-4 sm:p-6 antialiased text-slate-800">
 
-        <div class="text-base sm:text-lg text-gray-700 space-y-3">
-            <p><strong>Phone:</strong> <a href="tel:+8801533410127" class="text-blue-600 hover:underline">+8801533410127</a></p>
-            <p><strong>Email:</strong> <a href="mailto:h.tanim@outlook.com" class="text-blue-600 hover:underline">h.tanim@outlook.com</a></p>
-
-            <div class="mt-6 border-t pt-4 border-gray-200">
-                <p class="font-semibold text-gray-800 mb-2">Mailing Address:</p>
-                <p>Vill. : Porbapara, Post Office : Khutakhali (4741)</p>
-                <p>Upazila : Chakaria, District : Cox’sbazar</p>
+    <div class="w-full max-w-md bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden">
+        
+        <!-- Header Banner -->
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-700 p-6 sm:p-8 text-center text-white relative">
+            <div class="w-20 h-20 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-2xl font-black mx-auto mb-3 border border-white/20 shadow-inner">
+                TH
             </div>
-
-            <div class="mt-4 border-t pt-4 border-gray-200">
-                <p class="font-semibold text-gray-800 mb-2">Present Address:</p>
-                <p>House No-26, Block-[B], Sugonda R/A, Panchlaish, Chattogram</p>
-            </div>
+            <h1 class="text-2xl sm:text-3xl font-black tracking-tight">Tanım Hossain</h1>
+            <p class="text-xs font-medium text-blue-100 uppercase tracking-widest mt-1">Direct Contact Details</p>
         </div>
+
+        <div class="p-6 space-y-6">
+
+            <!-- Primary Contact Actions -->
+            <div class="space-y-3">
+                
+                <!-- Phone Item -->
+                <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center font-bold text-sm">
+                            📱
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Phone</p>
+                            <a href="tel:+8801533410127" class="text-sm font-semibold text-slate-900 hover:text-blue-600">
+                                +880 1533-410127
+                            </a>
+                        </div>
+                    </div>
+                    <button onclick="copyText('+8801533410127', this)" class="text-xs bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 font-medium px-2.5 py-1.5 rounded-lg transition-all">
+                        Copy
+                    </button>
+                </div>
+
+                <!-- Email Item -->
+                <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 bg-indigo-100 text-indigo-700 rounded-lg flex items-center justify-center font-bold text-sm">
+                            ✉️
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Email</p>
+                            <a href="mailto:h.tanim@outlook.com" class="text-sm font-semibold text-slate-900 hover:text-indigo-600">
+                                h.tanim@outlook.com
+                            </a>
+                        </div>
+                    </div>
+                    <button onclick="copyText('h.tanim@outlook.com', this)" class="text-xs bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 font-medium px-2.5 py-1.5 rounded-lg transition-all">
+                        Copy
+                    </button>
+                </div>
+
+            </div>
+
+            <hr class="border-slate-100" />
+
+            <!-- Addresses Section -->
+            <div class="space-y-4">
+                
+                <!-- Present Address -->
+                <div class="space-y-1">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                        <p class="text-xs font-bold text-slate-900 uppercase tracking-wider">Present Address</p>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed pl-4">
+                        House No-26, Block-[B], Sugonda R/A,<br>
+                        Panchlaish, Chattogram
+                    </p>
+                    <a href="https://maps.google.com/?q=Sugonda+RA+Panchlaish+Chattogram" target="_blank" class="inline-block pl-4 text-[11px] font-semibold text-blue-600 hover:underline">
+                        Open in Google Maps &rarr;
+                    </a>
+                </div>
+
+                <!-- Mailing Address -->
+                <div class="space-y-1">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                        <p class="text-xs font-bold text-slate-900 uppercase tracking-wider">Mailing / Permanent Address</p>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed pl-4">
+                        Vill: Porbapara, Post Office: Khutakhali (4741),<br>
+                        Upazila: Chakaria, District: Cox’sbazar
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Save Contact vCard Button -->
+            <div class="pt-2">
+                <button onclick="downloadVCard()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs py-3 rounded-xl transition-all shadow-md flex items-center justify-center gap-2">
+                    📥 Save Contact to Phone (vCard)
+                </button>
+            </div>
+
+        </div>
+
+        <div class="bg-slate-50 border-t border-slate-100 p-3 text-center text-[10px] text-slate-400 font-medium">
+            Tanım Hossain • Personal Contact Page
+        </div>
+
     </div>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Copy to clipboard helper
+        function copyText(text, btnElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = btnElement.innerText;
+                btnElement.innerText = "Copied!";
+                btnElement.classList.add("bg-emerald-50", "text-emerald-700", "border-emerald-200");
+                setTimeout(() => {
+                    btnElement.innerText = originalText;
+                    btnElement.classList.remove("bg-emerald-50", "text-emerald-700", "border-emerald-200");
+                }, 2000);
+            });
+        }
+
+        // vCard download generator
+        function downloadVCard() {
+            const vcardData = 
+`BEGIN:VCARD
+VERSION:3.0
+FN:Tanım Hossain
+N:Hossain;Tanım;;;
+TEL;TYPE=CELL:+8801533410127
+EMAIL;TYPE=INTERNET:h.tanim@outlook.com
+ADR;TYPE=HOME:;;House No-26\, Block-[B]\, Sugonda R/A;Panchlaish;Chattogram;;Bangladesh
+END:VCARD`;
+
+            const blob = new Blob([vcardData], { type: "text/vcard" });
+            const url = window.URL.createObjectURL(blob);
+            const newLink = document.createElement("a");
+            newLink.download = "Tanim_Hossain.vcf";
+            newLink.href = url;
+            newLink.click();
+        }
+    </script>
 </body>
 </html>
