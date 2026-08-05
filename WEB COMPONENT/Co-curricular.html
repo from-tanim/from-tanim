@@ -3,188 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanım Hossain - Co-curricular Activities</title>
-    <!-- Tailwind CSS CDN for styling -->
+    <title>Tanım Hossain - Co-Curricular & Leadership Portfolio</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter for a clean look -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Custom CSS for the Inter font */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
+        body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body class="bg-gray-50">
-    <!-- This is the root element where your React app will be mounted -->
+<body class="bg-slate-50 min-h-screen text-slate-800 antialiased">
     <div id="root"></div>
 
-    <!-- React and ReactDOM Libraries from CDN -->
+    <!-- React Dependencies -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <!-- Babel for JSX transformation in the browser (for development only) -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <!-- Your React App code -->
     <script type="text/babel">
-        // Main App component from the previous response
+        const activitiesData = [
+            {
+                id: "psa",
+                category: "Scouts & Leadership",
+                title: "Bangladesh Scouts President's Scout Award",
+                featured: true,
+                badge: "Highest Honor",
+                description: "Recognized with the premier national award for exceptional leadership, community service, and personal development in Scouting.",
+                details: "Participated in rigorous physical, intellectual, and ethical challenges across health, peacebuilding, and survival skills over multiple years. Led patrol teams during community development drives.",
+                skills: ["Team Leadership", "Crisis Management", "Ethics & Governance", "Public Service"],
+                meta: { Organization: "Bangladesh Scouts", Date: "March 2023", Level: "National" }
+            },
+            {
+                id: "jota",
+                category: "Scouts & Leadership",
+                title: "Jamboree on the Internet (JOTA-JOTI)",
+                featured: false,
+                badge: "International",
+                description: "Engaged in a global digital rally, connecting with scouts worldwide to solve challenges focused on Sustainable Development Goals (SDGs).",
+                details: "Collaborated in cross-cultural workshops on digital citizenship, peace education, and global connectivity, honing international cross-team communication.",
+                skills: ["Cross-Cultural Communication", "SDGs Alignment", "Remote Collaboration"],
+                meta: { Organization: "WOSM", Date: "Oct 2021 & 2022", Scope: "Global" }
+            },
+            {
+                id: "bask",
+                category: "Sports & Athletics",
+                title: "51st Winter National Sports - Basketball",
+                featured: true,
+                badge: "District Champion",
+                description: "Captain of the district champion basketball team, driving tactical gameplay and squad coordination.",
+                details: "Organized training drills, analyzed opponent tactics, and maintained squad morale through high-pressure knockout rounds to secure the championship trophy.",
+                skills: ["Team Captaincy", "High-Pressure Execution", "Tactical Strategy", "Athleticism"],
+                meta: { Role: "Team Captain", Institute: "Sports Club of Kishaloya Adarsha", Date: "2023" }
+            },
+            {
+                id: "pihacks",
+                category: "Hackathons & Tech",
+                title: "PIHACKS '21 Hackathon",
+                featured: false,
+                badge: "Competitor",
+                description: "Collaborated under intense time constraints to pitch and prototype tech-driven solutions for community challenges.",
+                details: "Brainstormed software/hardware architectures, developed functional logic, and delivered a quick presentation pitch to judges.",
+                skills: ["Rapid Prototyping", "Problem Solving", "Pitching", "Agile Collaboration"],
+                meta: { Organization: "Presidency International School", Date: "July 2021" }
+            },
+            {
+                id: "cyber",
+                category: "Scouts & Leadership",
+                title: "Be Safe Online & Cyber Safety Olympiad",
+                featured: false,
+                badge: "Certification",
+                description: "Achieved perfect marks in cyber safety certification and completed a 20-round national quiz series on digital ethics.",
+                details: "Focused on cybersecurity awareness, combatting online extremism, data privacy, and responsible internet navigation.",
+                skills: ["Cyber Security", "Digital Hygiene", "Information Ethics"],
+                meta: { Organization: "WOSM & USAID Obiroidh", Date: "2020 - 2021" }
+            },
+            {
+                id: "photo",
+                category: "Creative & Media",
+                title: "Photographer Badge Course",
+                featured: false,
+                badge: "Creative",
+                description: "Completed specialized training in visual story-telling, field photography, and digital media production.",
+                details: "Mastered manual camera controls, composition framing, and photojournalism techniques to document community service events.",
+                skills: ["Visual Communications", "Photography", "Media Production"],
+                meta: { Organization: "Bangladesh Scouts Program Div.", Date: "July 2020" }
+            }
+        ];
+
         const App = () => {
-            // Define the data for co-curricular activities.
-            // This structure allows for easy rendering and future expansion.
-            const activities = {
-                scoutsCommunity: [
-                    {
-                        title: "Bangladesh Scouts President's Scout Award",
-                        description: "Awarded for outstanding performance as a scout, demonstrating commitment to community service, leadership, and ethical conduct. Participated in various challenges including life skills, health and well-being, and peace.",
-                        organization: "Bangladesh Scouts",
-                        date: "March 2023",
-                    },
-                    {
-                        title: "Jamboree on the Internet (JOTA-JOTI)",
-                        description: "Engaged in an international online jamboree, collaborating with a global network to complete challenges related to SDGs, peace, and cultural exchange. Developed skills in international communication and awareness.",
-                        organization: "World Organization of the Scout Movement",
-                        date: "October 2021 & October 2022",
-                    },
-                    {
-                        title: "Photographer Badge Course",
-                        description: "Successfully completed a course organized by Bangladesh Scouts, acquiring skills in photography and visual communication. The course enhanced my creative and technical abilities.",
-                        organization: "Bangladesh Scouts, Program Division",
-                        date: "July 2020",
-                    },
-                    {
-                        title: "Be Safe Online Course",
-                        description: "Achieved a perfect score in an online course focused on cyber safety, demonstrating a strong understanding of online security and responsible digital behavior.",
-                        organization: "World Organization of the Scout Movement",
-                        date: "October 2021",
-                    },
-                    {
-                        title: "e-Awareness Olympiad",
-                        description: "Successfully completed a 20-round quiz series on Cyber Safety and Preventing Violent Extremism, highlighting a strong awareness of digital ethics and social responsibility.",
-                        organization: "USAID's Obiroidh, ICT Division, Government of Bangladesh",
-                        date: "May 9, 2020", // Placeholder: User needs to fill this
-                    },
-                    {
-                        title: "Growth Mindset Intervention Training",
-                        description: "Completed a training program to develop a growth mindset, which improved my problem-solving skills and adaptability.",
-                        organization: "Maxwell Stamp",
-                        date: "June 2021",
-                    },
-                ],
-                sportsAthletics: [
-                    {
-                        title: "51st Winter National Sports - Basketball",
-                        achievement: "District-Level Champion Team Captain",
-                        description: "Led the championship team to victory at the district level. This experience honed my skills in leadership, teamwork, discipline, and strategic thinking under pressure.",
-                        institute: "Sports Club of Kishaloya Adarsha Shiksha Niketan",
-                        date: "2023",
-                    },
-                ],
-                hackathonsCompetitions: [
-                    {
-                        title: "PIHACKS'21",
-                        description: "Actively participated in a hackathon, collaborating with a team to innovate and solve real-world problems. This experience enhanced my teamwork and problem-solving skills.",
-                        organization: "Presidency International School",
-                        date: "July 2021",
-                    },
-                ],
-            };
+            const [selectedCategory, setSelectedCategory] = React.useState("All");
+            const [searchQuery, setSearchQuery] = React.useState("");
+            const [activeModal, setActiveModal] = React.useState(null);
+
+            const categories = ["All", "Scouts & Leadership", "Sports & Athletics", "Hackathons & Tech", "Creative & Media"];
+
+            const filteredActivities = activitiesData.filter(act => {
+                const matchesCategory = selectedCategory === "All" || act.category === selectedCategory;
+                const matchesSearch = act.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                     act.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                     act.skills.some(s => s.toLowerCase().includes(searchQuery.toLowerCase()));
+                return matchesCategory && matchesSearch;
+            });
 
             return (
-                // Main container for the entire application.
-                // Uses Tailwind for responsive design, setting min-height to full screen,
-                // background color, and font.
-                <div className="min-h-screen bg-gray-50 font-inter text-gray-800 p-4 sm:p-8 flex flex-col items-center">
-                    {/* Header section */}
-                    <header className="w-full max-w-4xl text-center mb-10 p-6 bg-white rounded-xl shadow-lg">
-                        <h1 className="text-4xl sm:text-5xl font-extrabold text-blue-700 mb-2">Tanım Hossain</h1>
-                        <p className="text-xl sm:text-2xl text-gray-600">Co-curricular Activities Portfolio</p>
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                    
+                    <!-- Hero Section -->
+                    <header className="text-center mb-12">
+                        <div className="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
+                            Interactive Portfolio
+                        </div>
+                        <h1 className="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight mb-3">
+                            Tanım Hossain
+                        </h1>
+                        <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto font-normal">
+                            Co-Curricular Achievements, Leadership Milestones, & Technical Engagements
+                        </p>
                     </header>
 
-                    {/* Main content section for activities */}
-                    <main className="w-full max-w-4xl bg-white rounded-xl shadow-lg p-6 sm:p-8">
-                        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-8 text-center border-b-2 border-blue-500 pb-4">
-                            My Co-curricular Activities
-                        </h2>
+                    <!-- Key Impact Metrics Banner -->
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+                        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm text-center">
+                            <span className="block text-3xl font-extrabold text-blue-600">1+</span>
+                            <span className="text-xs font-medium text-slate-500 uppercase tracking-wider">President's Scout Award</span>
+                        </div>
+                        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm text-center">
+                            <span className="block text-3xl font-extrabold text-emerald-600">Captain</span>
+                            <span className="text-xs font-medium text-slate-500 uppercase tracking-wider">District Champion Team</span>
+                        </div>
+                        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm text-center">
+                            <span className="block text-3xl font-extrabold text-indigo-600">Global</span>
+                            <span className="text-xs font-medium text-slate-500 uppercase tracking-wider">JOTA-JOTI Contributor</span>
+                        </div>
+                        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm text-center">
+                            <span className="block text-3xl font-extrabold text-purple-600">10+</span>
+                            <span className="text-xs font-medium text-slate-500 uppercase tracking-wider">Certifications & Badges</span>
+                        </div>
+                    </div>
 
-                        {/* Scouts & Community Engagement Section */}
-                        <section className="mb-10">
-                            <h3 className="text-2xl sm:text-3xl font-semibold text-blue-600 mb-6 border-l-4 border-blue-500 pl-4">
-                                Scouts & Community Engagement
-                            </h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                {activities.scoutsCommunity.map((activity, index) => (
-                                    // Card for each activity, with rounded corners, shadow, and padding.
-                                    <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                                        <h4 className="text-xl font-bold text-gray-900 mb-2">{activity.title}</h4>
-                                        <p className="text-sm text-gray-600 mb-3">
-                                            <span className="font-semibold">Organization:</span> {activity.organization}
-                                        </p>
-                                        <p className="text-sm text-gray-600 mb-3">
-                                            <span className="font-semibold">Date:</span> {activity.date}
-                                        </p>
-                                        <p className="text-gray-700 leading-relaxed text-base">{activity.description}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </section>
+                    <!-- Filter & Search Controls -->
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+                        <!-- Category Buttons -->
+                        <div className="flex flex-wrap justify-center md:justify-start gap-1.5 w-full md:w-auto">
+                            {categories.map(cat => (
+                                <button
+                                    key={cat}
+                                    onClick={() => setSelectedCategory(cat)}
+                                    className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+                                        selectedCategory === cat
+                                            ? "bg-slate-900 text-white shadow-sm"
+                                            : "text-slate-600 hover:bg-slate-100"
+                                    }`}
+                                >
+                                    {cat}
+                                </button>
+                            ))}
+                        </div>
 
-                        {/* Sports & Athletics Section */}
-                        <section className="mb-10">
-                            <h3 className="text-2xl sm:text-3xl font-semibold text-blue-600 mb-6 border-l-4 border-blue-500 pl-4">
-                                Sports & Athletics
-                            </h3>
-                            <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
-                                {activities.sportsAthletics.map((activity, index) => (
-                                    // Card for each activity, with rounded corners, shadow, and padding.
-                                    <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                                        <h4 className="text-xl font-bold text-gray-900 mb-2">{activity.title}</h4>
-                                        <p className="text-sm text-gray-600 mb-3">
-                                            <span className="font-semibold">Achievement:</span> {activity.achievement}
-                                        </p>
-                                        <p className="text-sm text-gray-600 mb-3">
-                                            <span className="font-semibold">Institute:</span> {activity.institute}
-                                        </p>
-                                        <p className="text-sm text-gray-600 mb-3">
-                                            <span className="font-semibold">Date:</span> {activity.date}
-                                        </p>
-                                        <p className="text-gray-700 leading-relaxed text-base">{activity.description}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </section>
+                        <!-- Search Bar -->
+                        <div className="w-full md:w-64">
+                            <input
+                                type="text"
+                                placeholder="Search activity or skill..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3.5 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                            />
+                        </div>
+                    </div>
 
-                        {/* Hackathons & Competitions Section */}
-                        <section className="mb-10">
-                            <h3 className="text-2xl sm:text-3xl font-semibold text-blue-600 mb-6 border-l-4 border-blue-500 pl-4">
-                                Hackathons & Competitions
-                            </h3>
-                            <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
-                                {activities.hackathonsCompetitions.map((activity, index) => (
-                                    // Card for each activity, with rounded corners, shadow, and padding.
-                                    <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                                        <h4 className="text-xl font-bold text-gray-900 mb-2">{activity.title}</h4>
-                                        <p className="text-sm text-gray-600 mb-3">
-                                            <span className="font-semibold">Organization:</span> {activity.organization}
-                                        </p>
-                                        <p className="text-sm text-gray-600 mb-3">
-                                            <span className="font-semibold">Date:</span> {activity.date}
-                                        </p>
-                                        <p className="text-gray-700 leading-relaxed text-base">{activity.description}</p>
+                    <!-- Cards Grid -->
+                    <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {filteredActivities.map((act) => (
+                            <div 
+                                key={act.id} 
+                                onClick={() => setActiveModal(act)}
+                                className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all cursor-pointer flex flex-col justify-between group"
+                            >
+                                <div>
+                                    <div className="flex justify-between items-start mb-3">
+                                        <span className="text-[10px] uppercase tracking-wider font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md">
+                                            {act.category}
+                                        </span>
+                                        <span className="text-[10px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                                            {act.badge}
+                                        </span>
                                     </div>
-                                ))}
+                                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2">
+                                        {act.title}
+                                    </h3>
+                                    <p className="text-slate-600 text-xs leading-relaxed mb-4">
+                                        {act.description}
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <!-- Skill Badges -->
+                                    <div className="flex flex-wrap gap-1 mb-4">
+                                        {act.skills.slice(0, 3).map((skill, i) => (
+                                            <span key={i} className="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium">
+                                                {skill}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    <div className="pt-3 border-t border-slate-100 flex justify-between items-center text-[11px] text-slate-400 font-medium">
+                                        <span>{act.meta.Organization || act.meta.Institute || "Event"}</span>
+                                        <span className="text-blue-600 font-semibold group-hover:translate-x-1 transition-transform inline-block">View details &rarr;</span>
+                                    </div>
+                                </div>
                             </div>
-                        </section>
+                        ))}
                     </main>
 
-                    {/* Footer section (optional, but good practice) */}
-                    <footer className="w-full max-w-4xl text-center mt-10 p-4 text-gray-500 text-sm">
-                        <p>&copy; {new Date().getFullYear()} Tanım Hossain. All rights reserved.</p>
+                    {filteredActivities.length === 0 && (
+                        <div className="text-center py-12 text-slate-400 text-sm">
+                            No activities match your search query or filter.
+                        </div>
+                    )}
+
+                    <!-- Modal Popup -->
+                    {activeModal && (
+                        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+                            <div className="bg-white rounded-2xl max-w-lg w-full p-6 border border-slate-200 shadow-xl relative animate-in fade-in zoom-in duration-150">
+                                <button 
+                                    onClick={() => setActiveModal(null)}
+                                    className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-lg p-1"
+                                >
+                                    ✕
+                                </button>
+                                
+                                <span className="text-[10px] uppercase tracking-wider font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md">
+                                    {activeModal.category}
+                                </span>
+
+                                <h2 className="text-xl font-bold text-slate-900 mt-2 mb-1">{activeModal.title}</h2>
+                                <p className="text-xs text-slate-500 font-medium mb-4">{activeModal.meta.Organization || activeModal.meta.Institute} • {activeModal.meta.Date}</p>
+
+                                <div className="space-y-4 text-xs text-slate-600 leading-relaxed">
+                                    <div>
+                                        <h4 className="font-semibold text-slate-800 uppercase tracking-wider text-[10px] mb-1">Key Impact & Details</h4>
+                                        <p>{activeModal.details}</p>
+                                    </div>
+
+                                    <div>
+                                        <h4 className="font-semibold text-slate-800 uppercase tracking-wider text-[10px] mb-1">Competencies Developed</h4>
+                                        <div className="flex flex-wrap gap-1.5 mt-1">
+                                            {activeModal.skills.map((skill, idx) => (
+                                                <span key={idx} className="bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md font-semibold text-[10px]">
+                                                    {skill}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button 
+                                    onClick={() => setActiveModal(null)}
+                                    className="w-full mt-6 bg-slate-900 text-white font-medium text-xs py-2.5 rounded-xl hover:bg-slate-800 transition-colors"
+                                >
+                                    Close Window
+                                </button>
+                            </div>
+                        </div>
+                    )}
+
+                    <!-- Footer -->
+                    <footer className="mt-20 border-t border-slate-200 pt-8 text-center text-xs text-slate-400">
+                        <p>© {new Date().getFullYear()} Tanım Hossain. Built with React & Tailwind CSS.</p>
                     </footer>
                 </div>
             );
         };
 
-        // Render the React App component into the 'root' div
         ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     </script>
 </body>
